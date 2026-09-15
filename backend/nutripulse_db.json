@@ -41,7 +41,7 @@
       "chronic_diseases": "Hypertension, Mild Kidney Disease",
       "allergies": "Peanuts",
       "medication_notes": "Lisinopril",
-      "updated_at": "2026-09-15T15:59:10.714Z"
+      "updated_at": "2026-09-15T16:08:25.910Z"
     }
   ],
   "products": [
@@ -52,7 +52,7 @@
       "description": "The ultimate daily wellness supplement for men by Eva Pharma, featuring 26 vitamins, minerals, Ginseng & CoQ10 to support energy, immunity, stamina, and cardiovascular health.",
       "category": "Daily Wellness",
       "price": 11.99,
-      "stock_quantity": 150,
+      "stock_quantity": 148,
       "dosage_instructions": "Take 1 tablet daily with food.",
       "image_url": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80",
       "health_tags": "Men Health, Energy, Stamina, Immune Defense",
@@ -265,6 +265,23 @@
       "is_featured": 0,
       "is_active": 1,
       "created_at": "2026-09-15T15:59:10.725Z"
+    },
+    {
+      "id": 14,
+      "name": "Limitless Test Booster Max",
+      "slug": "limitless-test-booster-max-1789488505920",
+      "description": "High-potency support with Zinc, Boron & Ashwagandha.",
+      "category": "Daily Wellness",
+      "price": 39.99,
+      "stock_quantity": 50,
+      "dosage_instructions": "Take 2 capsules daily with water.",
+      "image_url": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=500",
+      "health_tags": "Men Health, Energy",
+      "contraindications": "Avoid if severe renal dysfunction",
+      "active_ingredients": "Zinc 15mg, Boron 10mg, KSM-66 Ashwagandha 600mg",
+      "is_featured": 0,
+      "is_active": 1,
+      "created_at": "2026-09-15T16:08:25.920Z"
     }
   ],
   "discounts": [
@@ -275,7 +292,7 @@
       "discount_type": "percentage",
       "discount_value": 10,
       "min_order_amount": 15,
-      "times_used": 8,
+      "times_used": 9,
       "starts_at": "2026-09-15T15:23:27.914Z",
       "expires_at": "2026-12-31T23:59:59.000Z",
       "is_active": 1
@@ -308,7 +325,7 @@
       "customer_phone": "+20 111 222 3333",
       "distributor_id": 2,
       "created_at": "2026-09-15T15:23:27.914Z",
-      "updated_at": "2026-09-15T15:59:10.732Z"
+      "updated_at": "2026-09-15T16:08:25.926Z"
     },
     {
       "id": 2,
@@ -389,6 +406,22 @@
       "distributor_id": 2,
       "created_at": "2026-09-15T15:59:10.721Z",
       "updated_at": "2026-09-15T15:59:10.727Z"
+    },
+    {
+      "id": 7,
+      "order_number": "NP-2026-6217",
+      "user_id": 3,
+      "total_amount": 23.98,
+      "discount_amount": 2.4,
+      "final_amount": 21.58,
+      "status": "Pending",
+      "payment_status": "Paid",
+      "payment_method": "Cash on Delivery",
+      "shipping_address": "123 Limitless Avenue, Cairo",
+      "customer_phone": "+201012345678",
+      "distributor_id": 2,
+      "created_at": "2026-09-15T16:08:25.917Z",
+      "updated_at": "2026-09-15T16:08:25.922Z"
     }
   ],
   "order_items": [
@@ -463,6 +496,15 @@
       "price": 11.99,
       "quantity": 2,
       "subtotal": 23.98
+    },
+    {
+      "id": 9,
+      "order_id": 7,
+      "product_id": 1,
+      "product_name": "Limitless Man Max Multivitamin 30 Tabs",
+      "price": 11.99,
+      "quantity": 2,
+      "subtotal": 23.98
     }
   ],
   "deliveries": [
@@ -473,7 +515,7 @@
       "status": "In Transit",
       "delivery_address": "Building 14, Smart Village, Giza, Egypt",
       "notes": "Out for delivery",
-      "updated_at": "2026-09-15T15:59:10.732Z"
+      "updated_at": "2026-09-15T16:08:25.926Z"
     },
     {
       "id": 2,
@@ -519,11 +561,40 @@
       "delivery_address": "123 Limitless Avenue, Cairo",
       "notes": "Standard delivery dispatch",
       "updated_at": "2026-09-15T15:59:10.721Z"
+    },
+    {
+      "id": 7,
+      "order_id": 7,
+      "distributor_id": 2,
+      "status": "Assigned",
+      "delivery_address": "123 Limitless Avenue, Cairo",
+      "notes": "Standard delivery dispatch",
+      "updated_at": "2026-09-15T16:08:25.917Z"
     }
   ],
   "favorites": [],
   "cart_items": [],
   "notifications": [
+    {
+      "id": 8,
+      "title": "🧬 AI Alert: Hydrolyzed Marine Collagen Formula",
+      "message": "Rebuild joint cartilage & smooth skin elasticity. 10% off code LIMITLESS10 applied.",
+      "channels": [
+        "android_push",
+        "ios_push",
+        "email",
+        "sms"
+      ],
+      "target_segment": "chronic_patients",
+      "campaign_type": "ai_recommendation",
+      "attached_discount_code": "LIMITLESS10",
+      "recipient_count": 1,
+      "status": "Sent",
+      "sent_at": "2026-09-15T16:08:25.932Z",
+      "open_rate_pct": 79,
+      "click_rate_pct": 39,
+      "created_by": "admin@limitless.com"
+    },
     {
       "id": 7,
       "title": "🧬 AI Alert: Hydrolyzed Marine Collagen Formula",
