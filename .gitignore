@@ -11,3 +11,6 @@ frontend/build/
 # System & logs
 *.log
 .DS_Store
+.env
+!.env.example
+
