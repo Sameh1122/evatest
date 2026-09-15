@@ -117,10 +117,13 @@
       display: flex;
       align-items: center;
       gap: 6px;
+      padding: 6px 12px;
+      border-radius: 8px;
     }
 
     .nav-link:hover, .nav-link.active {
       color: var(--gold);
+      background: rgba(245, 158, 11, 0.1);
     }
 
     .controls-group {
@@ -331,6 +334,103 @@
       margin-bottom: 20px;
     }
 
+    /* Admin Notification Panel */
+    .admin-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 24px;
+      display: none;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .stat-card {
+      background: #0f172a;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 14px;
+
+    }
+
+    .stat-val {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--gold);
+    }
+
+    .stat-lbl {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .channel-checkboxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .cb-label {
+      background: #0f172a;
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    /* Distributor Logistics Panel */
+    .distributor-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 24px;
+      display: none;
+    }
+
+    .order-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 13px;
+    }
+
+    .order-table th, .order-table td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .order-table th {
+      color: var(--text-muted);
+      font-weight: 700;
+      background: #0f172a;
+    }
+
+    .status-badge {
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      display: inline-block;
+    }
+
+    .status-pending { background: rgba(245, 158, 11, 0.2); color: var(--gold); }
+    .status-shipped { background: rgba(6, 182, 212, 0.2); color: var(--accent); }
+    .status-delivered { background: rgba(16, 185, 129, 0.2); color: var(--primary); }
+
     /* Search & Filter Bar */
     .filter-section {
       margin-bottom: 24px;
@@ -421,6 +521,7 @@
       position: relative;
       overflow: hidden;
       background: #0f172a;
+      cursor: pointer;
     }
 
     .product-img {
@@ -472,6 +573,11 @@
       font-weight: 700;
       margin-bottom: 8px;
       color: #fff;
+      cursor: pointer;
+    }
+
+    .product-name:hover {
+      color: var(--gold);
     }
 
     .product-desc {
@@ -514,6 +620,10 @@
       display: flex;
       align-items: center;
       gap: 6px;
+    }
+
+    .add-cart-btn:hover {
+      background: var(--primary-hover);
     }
 
     /* Modal Overlay */
@@ -595,33 +705,9 @@
       cursor: pointer;
     }
 
-    /* Notification Center Panel (Admin) */
-    .admin-panel {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      margin-bottom: 24px;
-      display: none;
-    }
-
-    .channel-checkboxes {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .cb-label {
-      background: #0f172a;
-      padding: 10px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-color);
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
+    .q-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
     }
 
     /* Toast Notification */
@@ -638,6 +724,24 @@
       z-index: 3000;
       display: none;
     }
+
+    /* Broadcast Progress Bar */
+    .progress-bar-wrap {
+      width: 100%;
+      height: 8px;
+      background: #0f172a;
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 12px 0;
+      display: none;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--primary));
+      transition: width 0.3s ease;
+    }
   </style>
 </head>
 <body>
@@ -646,7 +750,7 @@
   <header class="header">
     <div class="nav-container">
       <div class="logo-section" onclick="switchView('store')">
-        <div class="logo-badge"><i class="fa-solid => fa-star"></i>★</div>
+        <div class="logo-badge">★</div>
         <div class="logo-text">
           <h1>LIMITLESS</h1>
           <span>BY EVA PHARMA</span>
@@ -654,8 +758,8 @@
       </div>
 
       <nav class="nav-links">
-        <a class="nav-link active" onclick="switchView('store')"><i class="fa-solid fa-store"></i> Limitless Store</a>
-        <a class="nav-link" onclick="openHealthModal()"><i class="fa-solid fa-dna"></i> AI Health Profiler</a>
+        <a class="nav-link active" id="navStore" onclick="switchView('store')"><i class="fa-solid fa-store"></i> Limitless Store</a>
+        <a class="nav-link" id="navHealth" onclick="openHealthModal()"><i class="fa-solid fa-dna"></i> AI Health Profiler</a>
         <a class="nav-link" id="navAdminNotif" style="display:none;" onclick="switchView('admin')"><i class="fa-solid fa-bullhorn"></i> Notification Center</a>
         <a class="nav-link" id="navDistributor" style="display:none;" onclick="switchView('distributor')"><i class="fa-solid fa-truck"></i> Logistics Queue</a>
       </nav>
@@ -689,7 +793,7 @@
   <div class="main-wrapper" id="desktopWrapper">
 
     <!-- Hero Banner -->
-    <div class="hero-banner">
+    <div class="hero-banner" id="heroBanner">
       <div class="hero-subtitle">Limitless Naturals by Eva Pharma</div>
       <h2 class="hero-title">Unlock Your Full Health Potential with Limitless</h2>
       <p class="hero-desc">Pharmaceutical-grade dietary supplements formulated by Eva Pharma to power your vitality while safeguarding against medical contraindications.</p>
@@ -699,15 +803,35 @@
     <!-- Admin Notification Center Section -->
     <div class="admin-panel" id="adminPanel">
       <h3 style="color:var(--gold); margin-bottom:12px;"><i class="fa-solid fa-bullhorn"></i> Admin Multi-Channel Notification Center</h3>
-      <p style="color:var(--text-muted); font-size:13px; margin-bottom:16px;">Broadcast health alerts, AI recommendations, and promotional discounts across Android Push, iOS Push, Email, and SMS.</p>
+      <p style="color:var(--text-muted); font-size:13px; margin-bottom:16px;">Broadcast health alerts, AI recommendations, and promotional discounts across Android Push (FCM), iOS Push (APNs), Email (AWS SES), and Mobile SMS.</p>
       
+      <!-- Live Metrics Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-val" id="statAndroid">2,410</div>
+          <div class="stat-lbl">📱 FCM Android Devices</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" id="statiOS">1,120</div>
+          <div class="stat-lbl">🍎 APNs iOS Devices</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" id="statEmail">300</div>
+          <div class="stat-lbl">📧 Email Subscribers</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" id="statSMS">20</div>
+          <div class="stat-lbl">💬 Mobile SMS Contacts</div>
+        </div>
+      </div>
+
       <div class="form-group">
         <label class="form-label">Campaign Title</label>
         <input type="text" class="form-input" id="notifTitle" value="⚡ 20% Off Limitless Hydration Packets!">
       </div>
       <div class="form-group">
         <label class="form-label">Message Content</label>
-        <input type="text" class="form-input" id="notifBody" value="Replenish electrolytes instantly. Use promo code HYDRATE20 on orders above $30.">
+        <input type="text" class="form-input" id="notifBody" value="Replenish cellular electrolytes instantly. Use promo code HYDRATE20 on orders above $30.">
       </div>
 
       <div class="channel-checkboxes">
@@ -717,33 +841,86 @@
         <label class="cb-label"><input type="checkbox" checked id="chSMS"> 💬 Mobile SMS</label>
       </div>
 
+      <div class="progress-bar-wrap" id="broadcastProgressBar">
+        <div class="progress-bar-fill" id="broadcastProgressFill"></div>
+      </div>
+
+      <div id="broadcastStatusLog" style="font-size:13px; color:var(--accent); margin-bottom:12px; display:none;"></div>
+
       <button class="btn-primary" onclick="sendBroadcast()"><i class="fa-solid fa-paper-plane"></i> Dispatch Broadcast Campaign</button>
     </div>
 
-    <!-- Filter & Search Section -->
-    <div class="filter-section">
-      <div class="search-bar">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="searchInput" placeholder="Search multivitamin, collagen, omega-3..." oninput="filterProducts()">
-      </div>
+    <!-- Distributor Logistics Panel -->
+    <div class="distributor-panel" id="distributorPanel">
+      <h3 style="color:var(--accent); margin-bottom:12px;"><i class="fa-solid fa-truck"></i> Logistics & Delivery Queue</h3>
+      <p style="color:var(--text-muted); font-size:13px; margin-bottom:16px;">Monitor real-time order dispatch, driver route assignments, and warehouse stock levels.</p>
 
-      <div class="filter-pills">
-        <div class="pill active" onclick="setCategory('All', this)">All</div>
-        <div class="pill" onclick="setCategory('Daily Wellness', this)">Daily Multivitamins</div>
-        <div class="pill" onclick="setCategory('Full-Body Support', this)">Heart & Joint Health</div>
-        <div class="pill" onclick="setCategory('Immune Defense', this)">Immunity Shield</div>
-        <div class="pill" onclick="setCategory('Hydration & Balance', this)">Hydration & Energy</div>
-      </div>
+      <table class="order-table">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Client Name</th>
+            <th>Supplement Stack</th>
+            <th>Total Price</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>#ORD-1042</b></td>
+            <td>Karim Hassan</td>
+            <td>Limitless Man Max, Vitamin C 1000mg</td>
+            <td>$19.49</td>
+            <td><span class="status-badge status-pending">Pending Pickup</span></td>
+            <td><button class="add-cart-btn" onclick="updateOrderStatus(this, 'Out for Delivery')">Assign Driver</button></td>
+          </tr>
+          <tr>
+            <td><b>#ORD-1043</b></td>
+            <td>Sarah Ahmed</td>
+            <td>Limitless Woman Max, Collagen Marine</td>
+            <td>$33.98</td>
+            <td><span class="status-badge status-shipped">Out for Delivery</span></td>
+            <td><button class="add-cart-btn" style="background:var(--accent);" onclick="updateOrderStatus(this, 'Delivered')">Confirm Delivery</button></td>
+          </tr>
+          <tr>
+            <td><b>#ORD-1044</b></td>
+            <td>Omar Farouk</td>
+            <td>Limitless Omega-3 2000mg</td>
+            <td>$14.99</td>
+            <td><span class="status-badge status-delivered">Delivered</span></td>
+            <td><span style="color:var(--text-muted); font-size:12px;">Completed</span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <!-- Catalog Section -->
-    <div class="catalog-title">
-      <h2>Limitless Catalog</h2>
-      <span style="color:var(--text-muted); font-size:14px;" id="itemCountLabel">8 Items</span>
-    </div>
+    <div id="catalogSection">
+      <!-- Filter & Search Section -->
+      <div class="filter-section">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="Search multivitamin, collagen, omega-3..." oninput="filterProducts()">
+        </div>
 
-    <div class="product-grid" id="productGrid">
-      <!-- Cards rendered dynamically -->
+        <div class="filter-pills">
+          <div class="pill active" onclick="setCategory('All', this)">All</div>
+          <div class="pill" onclick="setCategory('Daily Wellness', this)">Daily Multivitamins</div>
+          <div class="pill" onclick="setCategory('Full-Body Support', this)">Heart & Joint Health</div>
+          <div class="pill" onclick="setCategory('Immune Defense', this)">Immunity Shield</div>
+          <div class="pill" onclick="setCategory('Hydration & Balance', this)">Hydration & Energy</div>
+        </div>
+      </div>
+
+      <div class="catalog-title">
+        <h2>Limitless Catalog</h2>
+        <span style="color:var(--text-muted); font-size:14px;" id="itemCountLabel">8 Items</span>
+      </div>
+
+      <div class="product-grid" id="productGrid">
+        <!-- Cards rendered dynamically -->
+      </div>
     </div>
   </div>
 
@@ -797,6 +974,14 @@
     </div>
   </div>
 
+  <!-- Product Detail Modal -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal-card" id="productModalCard">
+      <i class="fa-solid fa-xmark modal-close" onclick="closeModal('productModal')"></i>
+      <div id="productModalContent"></div>
+    </div>
+  </div>
+
   <!-- Health Profile Modal -->
   <div class="modal-overlay" id="healthModal">
     <div class="modal-card">
@@ -808,15 +993,15 @@
         <label class="form-label">Select Chronic Health Conditions</label>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
           <label class="cb-label"><input type="checkbox" checked id="hcHypertension"> Hypertension (High BP)</label>
-          <label class="cb-label"><input type="checkbox" checked id="hcKidney"> Mild Kidney Disease</label>
+          <label class="cb-label"><input type="checkbox" id="hcKidney"> Mild Kidney Disease</label>
           <label class="cb-label"><input type="checkbox" id="hcSeafood"> Seafood / Marine Allergy</label>
           <label class="cb-label"><input type="checkbox" id="hcBleeding"> Bleeding Disorders</label>
         </div>
       </div>
 
       <div style="background:#0f172a; padding:14px; border-radius:12px; border:1px solid var(--primary); margin-bottom:16px;">
-        <h4 style="color:var(--primary); font-size:14px; margin-bottom:6px;">🧬 AI Recommendation Proposal</h4>
-        <p style="font-size:13px; color:#cbd5e1;">Matched: <b>Limitless Lactoferrin 100mg Immunity</b> (98% Match)</p>
+        <h4 style="color:var(--primary); font-size:14px; margin-bottom:6px;">🧬 AI Recommendation Stack</h4>
+        <p style="font-size:13px; color:#cbd5e1;">Recommended: <b>Limitless Lactoferrin 100mg Immunity</b> & <b>Limitless Vitamin C 1000mg</b></p>
         <p style="font-size:12px; color:var(--danger); margin-top:4px;">⚠️ Contraindication Alert: Limitless Man Max contains Ginseng (caution advised for severe uncontrolled hypertension).</p>
       </div>
 
@@ -829,8 +1014,17 @@
     <div class="modal-card">
       <i class="fa-solid fa-xmark modal-close" onclick="closeModal('cartModal')"></i>
       <h2><i class="fa-solid fa-cart-shopping"></i> Shopping Cart</h2>
+      
       <div id="cartItemsList" style="margin:20px 0; max-height:250px; overflow-y:auto;">
         <!-- Cart items rendered -->
+      </div>
+
+      <div class="form-group" style="margin-bottom:12px;">
+        <label class="form-label">Promo Code</label>
+        <div style="display:flex; gap:8px;">
+          <input type="text" class="form-input" id="promoCodeInput" placeholder="e.g. HYDRATE20" style="text-transform:uppercase;">
+          <button class="btn-primary" style="padding:8px 14px;" onclick="applyPromoCode()">Apply</button>
+        </div>
       </div>
 
       <div style="display:flex; justify-content:space-between; font-size:18px; font-weight:800; border-top:1px solid var(--border-color); padding-top:14px; margin-bottom:16px;">
@@ -933,6 +1127,7 @@
     let cart = [];
     let favorites = new Set();
     let selectedCategory = 'All';
+    let discountApplied = 0;
 
     function renderProducts() {
       const grid = document.getElementById('productGrid');
@@ -953,15 +1148,15 @@
         const card = document.createElement('div');
         card.className = 'product-card';
         card.innerHTML = `
-          <div class="product-img-wrap">
+          <div class="product-img-wrap" onclick="openProductDetail(${p.id})">
             <img class="product-img" src="${p.image}" alt="${p.name}">
             <span class="product-tag">${p.tag}</span>
-            <div class="fav-icon ${isFav ? 'active' : ''}" onclick="toggleFav(${p.id})">
+            <div class="fav-icon ${isFav ? 'active' : ''}" onclick="event.stopPropagation(); toggleFav(${p.id})">
               <i class="fa-solid fa-heart"></i>
             </div>
           </div>
           <div class="product-details">
-            <div class="product-name">${p.name}</div>
+            <div class="product-name" onclick="openProductDetail(${p.id})">${p.name}</div>
             <div class="product-desc">${p.desc}</div>
             <div class="product-meta"><i class="fa-solid fa-vial"></i> ${p.ingredients}</div>
             <div class="product-bottom">
@@ -974,11 +1169,53 @@
       });
     }
 
+    function switchView(view) {
+      const adminPanel = document.getElementById('adminPanel');
+      const distributorPanel = document.getElementById('distributorPanel');
+      const catalogSection = document.getElementById('catalogSection');
+
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+
+      if (view === 'admin') {
+        adminPanel.style.display = 'block';
+        distributorPanel.style.display = 'none';
+        catalogSection.style.display = 'block';
+        document.getElementById('navAdminNotif').classList.add('active');
+      } else if (view === 'distributor') {
+        adminPanel.style.display = 'none';
+        distributorPanel.style.display = 'block';
+        catalogSection.style.display = 'block';
+        document.getElementById('navDistributor').classList.add('active');
+      } else {
+        adminPanel.style.display = 'none';
+        distributorPanel.style.display = 'none';
+        catalogSection.style.display = 'block';
+        document.getElementById('navStore').classList.add('active');
+      }
+    }
+
     function addToCart(id) {
       const p = products.find(prod => prod.id === id);
-      cart.push(p);
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...p, qty: 1 });
+      }
       updateCartBadge();
       showToast(`Added ${p.name} to cart!`);
+    }
+
+    function changeCartQty(id, delta) {
+      const idx = cart.findIndex(item => item.id === id);
+      if (idx !== -1) {
+        cart[idx].qty += delta;
+        if (cart[idx].qty <= 0) {
+          cart.splice(idx, 1);
+        }
+      }
+      updateCartBadge();
+      renderCartList();
     }
 
     function toggleFav(id) {
@@ -988,7 +1225,8 @@
     }
 
     function updateCartBadge() {
-      document.getElementById('cartCount').innerText = cart.length;
+      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById('cartCount').innerText = totalCount;
     }
 
     function setCategory(cat, el) {
@@ -1006,15 +1244,20 @@
       document.getElementById('navAdminNotif').style.display = role === 'admin' ? 'flex' : 'none';
       document.getElementById('adminPanel').style.display = role === 'admin' ? 'block' : 'none';
       document.getElementById('navDistributor').style.display = role === 'distributor' ? 'flex' : 'none';
+      document.getElementById('distributorPanel').style.display = role === 'distributor' ? 'block' : 'none';
 
       if (role === 'admin') {
         document.getElementById('authBtnText').innerText = 'Admin Portal';
+        switchView('admin');
       } else if (role === 'distributor') {
         document.getElementById('authBtnText').innerText = 'Distributor Queue';
+        switchView('distributor');
       } else if (role === 'client') {
         document.getElementById('authBtnText').innerText = 'Karim Hassan';
+        switchView('store');
       } else {
         document.getElementById('authBtnText').innerText = 'Login / Register';
+        switchView('store');
       }
       showToast(`Switched view to ${role.toUpperCase()} mode`);
     }
@@ -1060,26 +1303,70 @@
     }
     function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
+    function openProductDetail(id) {
+      const p = products.find(prod => prod.id === id);
+      const content = document.getElementById('productModalContent');
+      content.innerHTML = `
+        <div style="display:flex; gap:20px; flex-wrap:wrap;">
+          <img src="${p.image}" style="width:200px; height:200px; border-radius:12px; object-fit:cover;">
+          <div style="flex:1;">
+            <span class="product-tag" style="position:static;">${p.tag}</span>
+            <h2 style="margin:10px 0 6px 0; font-size:20px;">${p.name}</h2>
+            <div style="font-size:22px; font-weight:800; color:var(--gold); margin-bottom:12px;">$${p.price.toFixed(2)}</div>
+            <p style="color:var(--text-muted); font-size:14px; margin-bottom:14px; line-height:1.5;">${p.desc}</p>
+            <div style="background:#0f172a; padding:12px; border-radius:8px; margin-bottom:16px; font-size:13px;">
+              <div style="color:var(--accent); font-weight:700; margin-bottom:4px;"><i class="fa-solid fa-vial"></i> Active Ingredients:</div>
+              <div>${p.ingredients}</div>
+              <div style="color:var(--text-muted); margin-top:6px; font-size:12px;">Manufactured in Egypt by Eva Pharma according to strict GMP standards.</div>
+            </div>
+            <button class="btn-primary" style="width:100%; justify-content:center;" onclick="addToCart(${p.id}); closeModal('productModal');">
+              <i class="fa-solid fa-cart-plus"></i> Add to Order ($${p.price.toFixed(2)})
+            </button>
+          </div>
+        </div>
+      `;
+      document.getElementById('productModal').style.display = 'flex';
+    }
+
     function renderCartList() {
       const list = document.getElementById('cartItemsList');
       if (cart.length === 0) {
-        list.innerHTML = '<p style="color:var(--text-muted); text-align:center;">Your cart is empty.</p>';
+        list.innerHTML = '<p style="color:var(--text-muted); text-align:center; padding:20px 0;">Your cart is empty.</p>';
         document.getElementById('cartTotalText').innerText = '$0.00';
         return;
       }
-      let total = 0;
+      let subtotal = 0;
       list.innerHTML = cart.map(item => {
-        total += item.price;
+        const itemTotal = item.price * item.qty;
+        subtotal += itemTotal;
         return `
-          <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--border-color);">
-            <div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid var(--border-color);">
+            <div style="flex:1;">
               <div style="font-size:14px; font-weight:700;">${item.name}</div>
-              <div style="font-size:12px; color:var(--gold);">$${item.price}</div>
+              <div style="font-size:12px; color:var(--gold);">$${item.price.toFixed(2)} ea</div>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <button class="add-cart-btn" style="padding:4px 8px;" onclick="changeCartQty(${item.id}, -1)">-</button>
+              <span style="font-weight:700; font-size:14px;">${item.qty}</span>
+              <button class="add-cart-btn" style="padding:4px 8px;" onclick="changeCartQty(${item.id}, 1)">+</button>
             </div>
           </div>
         `;
       }).join('');
-      document.getElementById('cartTotalText').innerText = `$${total.toFixed(2)}`;
+
+      const total = Math.max(0, subtotal - discountApplied);
+      document.getElementById('cartTotalText').innerText = `$${total.toFixed(2)} ${discountApplied > 0 ? '(Promo Applied!)' : ''}`;
+    }
+
+    function applyPromoCode() {
+      const code = document.getElementById('promoCodeInput').value.trim().toUpperCase();
+      if (code === 'HYDRATE20') {
+        discountApplied = 5.00;
+        renderCartList();
+        showToast('🎉 Promo code HYDRATE20 applied! $5 discount granted.');
+      } else {
+        showToast('Invalid promo code. Use code HYDRATE20');
+      }
     }
 
     function executeLogin() {
@@ -1103,20 +1390,66 @@
         return;
       }
       cart = [];
+      discountApplied = 0;
       updateCartBadge();
       closeModal('cartModal');
       showToast('🎉 Order placed successfully! Tracking stepper activated.');
     }
 
+    function updateOrderStatus(btn, newStatus) {
+      const row = btn.closest('tr');
+      const badgeSpan = row.querySelector('.status-badge');
+      badgeSpan.className = 'status-badge status-delivered';
+      badgeSpan.innerText = newStatus;
+      btn.outerHTML = '<span style="color:var(--primary); font-weight:700; font-size:12px;">Updated!</span>';
+      showToast(`Order status updated to ${newStatus}`);
+    }
+
     function sendBroadcast() {
-      showToast('🚀 Multi-channel notification broadcast sent to 3,850 users!');
+      const title = document.getElementById('notifTitle').value;
+      const body = document.getElementById('notifBody').value;
+      
+      const chAndroid = document.getElementById('chAndroid').checked;
+      const chIOS = document.getElementById('chIOS').checked;
+      const chEmail = document.getElementById('chEmail').checked;
+      const chSMS = document.getElementById('chSMS').checked;
+
+      if (!title || !body) {
+        showToast('Please enter campaign title and content!');
+        return;
+      }
+
+      const pBar = document.getElementById('broadcastProgressBar');
+      const pFill = document.getElementById('broadcastProgressFill');
+      const log = document.getElementById('broadcastStatusLog');
+
+      pBar.style.display = 'block';
+      log.style.display = 'block';
+      pFill.style.width = '20%';
+      log.innerText = 'Connecting to Push Gateway APIs (FCM / APNs)...';
+
+      setTimeout(() => {
+        pFill.style.width = '60%';
+        log.innerText = 'Dispatching multi-channel payloads across 3,850 active endpoints...';
+      }, 600);
+
+      setTimeout(() => {
+        pFill.style.width = '100%';
+        log.innerText = `Campaign "${title}" successfully delivered! (Android: 2410, iOS: 1120, Email: 300, SMS: 20)`;
+        
+        // Update stats
+        document.getElementById('statAndroid').innerText = (parseInt(document.getElementById('statAndroid').innerText.replace(',', '')) + 15).toLocaleString();
+        document.getElementById('statiOS').innerText = (parseInt(document.getElementById('statiOS').innerText.replace(',', '')) + 10).toLocaleString();
+        
+        showToast('🚀 Multi-channel campaign broadcast delivered successfully!');
+      }, 1400);
     }
 
     function showToast(msg) {
       const t = document.getElementById('toastMsg');
       t.innerText = msg;
       t.style.display = 'block';
-      setTimeout(() => { t.style.display = 'none'; }, 3000);
+      setTimeout(() => { t.style.display = 'none'; }, 3500);
     }
 
     // Initialize
