@@ -318,4 +318,52 @@ class ApiService {
     }
     throw Exception('Failed to fetch reports summary');
   }
+
+  // --- NOTIFICATION CENTER API (ADMIN ONLY) ---
+  static Future<Map<String, dynamic>> fetchNotificationCampaigns() async {
+    final response = await http.get(
+      Uri.parse('$baseUrl/notifications/campaigns'),
+      headers: _headers(),
+    );
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    }
+    throw Exception('Failed to fetch notification campaigns');
+  }
+
+  static Future<Map<String, dynamic>> sendNotificationCampaign(Map<String, dynamic> data) async {
+    final response = await http.post(
+      Uri.parse('$baseUrl/notifications/send'),
+      headers: _headers(),
+      body: jsonEncode(data),
+    );
+    final resData = jsonDecode(response.body);
+    if (response.statusCode == 201) {
+      return resData;
+    }
+    throw Exception(resData['error'] ?? 'Failed to send notification campaign');
+  }
+
+  static Future<Map<String, dynamic>> updateNotificationAutomation(Map<String, dynamic> data) async {
+    final response = await http.patch(
+      Uri.parse('$baseUrl/notifications/automation'),
+      headers: _headers(),
+      body: jsonEncode(data),
+    );
+    final resData = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      return resData;
+    }
+    throw Exception(resData['error'] ?? 'Failed to update automation rules');
+  }
+
+  static Future<void> deleteNotificationCampaign(int id) async {
+    final response = await http.delete(
+      Uri.parse('$baseUrl/notifications/campaigns/$id'),
+      headers: _headers(),
+    );
+    if (response.statusCode != 200) {
+      throw Exception('Failed to delete campaign');
+    }
+  }
 }

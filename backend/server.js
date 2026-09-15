@@ -9,6 +9,7 @@ const discountRoutes = require('./routes/discounts');
 const orderRoutes = require('./routes/orders');
 const distributorRoutes = require('./routes/distributor');
 const reportRoutes = require('./routes/reports');
+const notificationRoutes = require('./routes/notifications');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -24,6 +25,7 @@ app.use('/api/discounts', discountRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/distributor', distributorRoutes);
 app.use('/api/reports', reportRoutes);
+app.use('/api/notifications', notificationRoutes);
 
 // System Health Check
 app.get('/api/health', (req, res) => {

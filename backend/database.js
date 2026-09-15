@@ -37,6 +37,9 @@ function getNextId(collectionName) {
 
 function seedData() {
   console.log('Seeding shop.limitlessnaturals.com dataset...');
+  if (!dbData.notifications) dbData.notifications = [];
+  if (!dbData.notification_automation) dbData.notification_automation = {};
+
   dbData.users.length = 0;
   dbData.client_profiles.length = 0;
   dbData.products.length = 0;
@@ -46,6 +49,14 @@ function seedData() {
   dbData.deliveries.length = 0;
   dbData.favorites.length = 0;
   dbData.cart_items.length = 0;
+  dbData.notifications.length = 0;
+
+  dbData.notification_automation = {
+    ai_recommendation_trigger: true,
+    discount_broadcast_auto: true,
+    abandoned_cart_sms: true,
+    low_stock_admin_alert: true,
+  };
 
   const salt = bcrypt.genSaltSync(10);
   const adminHash = bcrypt.hashSync('admin123', salt);
@@ -327,6 +338,39 @@ function seedData() {
       delivery_address: 'Building 14, Smart Village, Giza, Egypt',
       notes: 'Express courier delivery',
       updated_at: now
+    }
+  );
+
+  dbData.notifications.push(
+    {
+      id: 1,
+      title: '🧬 AI Match: Bio-active Lactoferrin for Immune Health',
+      message: 'Eva Pharma AI matched your health profile! Lactoferrin 100mg boosts immune cell defense while safeguarding iron levels.',
+      channels: ['android_push', 'ios_push', 'email'],
+      target_segment: 'chronic_patients',
+      campaign_type: 'ai_recommendation',
+      attached_discount_code: 'LIMITLESS10',
+      recipient_count: 1420,
+      status: 'Sent',
+      sent_at: now,
+      open_rate_pct: 88,
+      click_rate_pct: 42,
+      created_by: 'admin@limitless.com'
+    },
+    {
+      id: 2,
+      title: '⚡ 20% Off Limitless Hydration Packets!',
+      message: 'Replenish electrolytes instantly. Use promo code HYDRATE20 on orders above $30.',
+      channels: ['android_push', 'ios_push', 'sms'],
+      target_segment: 'all',
+      campaign_type: 'discount_promo',
+      attached_discount_code: 'HYDRATE20',
+      recipient_count: 3850,
+      status: 'Sent',
+      sent_at: now,
+      open_rate_pct: 79,
+      click_rate_pct: 36,
+      created_by: 'admin@limitless.com'
     }
   );
 

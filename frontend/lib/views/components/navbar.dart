@@ -95,6 +95,7 @@ class AppNavbar extends StatelessWidget {
                     _navButton(context, 'Promo Discounts', 2, state.adminTab, () => state.setAdminTab(2)),
                     _navButton(context, 'Orders Management', 3, state.adminTab, () => state.setAdminTab(3)),
                     _navButton(context, 'Reports & Analytics', 4, state.adminTab, () => state.setAdminTab(4)),
+                    _navButton(context, 'Notification Center', 5, state.adminTab, () => state.setAdminTab(5)),
                   ] else if (state.currentRole == RoleMode.distributor) ...[
                     _navButton(context, 'Delivery Queue', 0, state.distributorTab, () => state.setDistributorTab(0)),
                     _navButton(context, 'Stock Capacity', 1, state.distributorTab, () => state.setDistributorTab(1)),

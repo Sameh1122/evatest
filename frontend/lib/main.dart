@@ -14,6 +14,7 @@ import 'views/admin/edit_products_page.dart';
 import 'views/admin/discounts_page.dart';
 import 'views/admin/admin_orders_page.dart';
 import 'views/admin/reports_page.dart';
+import 'views/admin/notification_center_page.dart';
 import 'views/distributor/delivery_management_page.dart';
 import 'views/distributor/stock_capacity_page.dart';
 import 'views/distributor/distributor_orders_page.dart';
@@ -327,13 +328,14 @@ class _NutriPulseAppState extends State<NutriPulseApp> {
         BottomNavigationBarItem(icon: Icon(Icons.person_outline), activeIcon: Icon(Icons.person), label: 'Profile'),
       ];
     } else if (state.currentRole == RoleMode.admin) {
-      currentIndex = state.adminTab.clamp(0, 4);
+      currentIndex = state.adminTab.clamp(0, 5);
       items = const [
         BottomNavigationBarItem(icon: Icon(Icons.add_circle_outline), activeIcon: Icon(Icons.add_circle), label: 'Add Item'),
         BottomNavigationBarItem(icon: Icon(Icons.inventory_2_outlined), activeIcon: Icon(Icons.inventory_2), label: 'Catalog'),
         BottomNavigationBarItem(icon: Icon(Icons.discount_outlined), activeIcon: Icon(Icons.discount), label: 'Discounts'),
         BottomNavigationBarItem(icon: Icon(Icons.assignment_outlined), activeIcon: Icon(Icons.assignment), label: 'Orders'),
         BottomNavigationBarItem(icon: Icon(Icons.analytics_outlined), activeIcon: Icon(Icons.analytics), label: 'Reports'),
+        BottomNavigationBarItem(icon: Icon(Icons.notifications_active_outlined), activeIcon: Icon(Icons.notifications_active), label: 'Alerts'),
       ];
     } else if (state.currentRole == RoleMode.distributor) {
       currentIndex = state.distributorTab.clamp(0, 2);
@@ -466,6 +468,8 @@ class _NutriPulseAppState extends State<NutriPulseApp> {
           return AdminOrdersPage(state: state);
         case 4:
           return ReportsPage(state: state);
+        case 5:
+          return NotificationCenterPage(state: state);
         default:
           return EditProductsPage(state: state);
       }

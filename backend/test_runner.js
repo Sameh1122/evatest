@@ -270,6 +270,54 @@ async function runTestSuite() {
     console.log(`    ℹ️ Warehouse Total Stock: ${res.body.summary.total_stock_units} units across ${res.body.summary.total_products} SKUs (${res.body.summary.warehouse_utilization_pct}% utilization)`);
   });
 
+  // 17. Admin Notification Campaigns Retrieval
+  await assertTest('17. Admin Notification Campaigns Retrieval (/api/notifications/campaigns)', async () => {
+    const res = await request('GET', '/api/notifications/campaigns', null, adminToken);
+    if (res.status !== 200 || !res.body.campaigns) {
+      throw new Error(`Fetching notification campaigns failed: ${JSON.stringify(res.body)}`);
+    }
+    console.log(`    ℹ️ Loaded ${res.body.campaigns.length} past notification campaigns`);
+  });
+
+  // 18. Admin Dispatch Multi-Channel Campaign (Android, iOS, Email, SMS)
+  await assertTest('18. Admin Multi-Channel Notification Dispatch (Android/iOS Push, Email, SMS)', async () => {
+    const res = await request(
+      'POST',
+      '/api/notifications/send',
+      {
+        title: '🧬 AI Alert: Hydrolyzed Marine Collagen Formula',
+        message: 'Rebuild joint cartilage & smooth skin elasticity. 10% off code LIMITLESS10 applied.',
+        channels: ['android_push', 'ios_push', 'email', 'sms'],
+        target_segment: 'chronic_patients',
+        campaign_type: 'ai_recommendation',
+        attached_discount_code: 'LIMITLESS10',
+      },
+      adminToken
+    );
+    if (res.status !== 201 || !res.body.campaign) {
+      throw new Error(`Dispatching notification campaign failed: ${JSON.stringify(res.body)}`);
+    }
+    console.log(`    ℹ️ Campaign dispatched to ${res.body.campaign.recipient_count} recipients across ${res.body.campaign.channels.length} channels`);
+  });
+
+  // 19. Admin Update AI & Discount Automation Settings
+  await assertTest('19. Admin AI & Discount Automation Settings Update', async () => {
+    const res = await request(
+      'PATCH',
+      '/api/notifications/automation',
+      {
+        ai_recommendation_trigger: true,
+        discount_broadcast_auto: true,
+        abandoned_cart_sms: true,
+        low_stock_admin_alert: true,
+      },
+      adminToken
+    );
+    if (res.status !== 200 || !res.body.automation) {
+      throw new Error(`Updating automation settings failed: ${JSON.stringify(res.body)}`);
+    }
+  });
+
   console.log('\n=================================================================');
   console.log(` 🏆 TEST SUITE RESULT: ${passed} PASSED | ${failed} FAILED`);
   console.log('=================================================================\n');

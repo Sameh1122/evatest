@@ -4,28 +4,28 @@
       "id": 1,
       "name": "Shop Limitless Admin",
       "email": "admin@limitless.com",
-      "password_hash": "$2a$10$B7Vmiy4Q7oRZF/uJK/olu.QyFvxhArIm.cR52oEybtwhZKRkLH5iG",
+      "password_hash": "$2a$10$OIIYlrCfgwq8p/.sb6UNTOAxVFcEf6wAN5e96mxexx/t.6q1mKXTW",
       "role": "admin",
       "phone": "+20 100 123 4567",
-      "created_at": "2026-09-15T15:01:15.133Z"
+      "created_at": "2026-09-15T15:14:21.350Z"
     },
     {
       "id": 2,
       "name": "Eva Logistics Distributor",
       "email": "distributor@limitless.com",
-      "password_hash": "$2a$10$B7Vmiy4Q7oRZF/uJK/olu.AGTQhGlaE2P8F4spWHIJh/Z0UUR9Dae",
+      "password_hash": "$2a$10$OIIYlrCfgwq8p/.sb6UNTOv565.zHdKiU4fFt63Qkyj/sqIyhk5QC",
       "role": "distributor",
       "phone": "+20 100 987 6543",
-      "created_at": "2026-09-15T15:01:15.133Z"
+      "created_at": "2026-09-15T15:14:21.350Z"
     },
     {
       "id": 3,
       "name": "Karim Hassan (Client)",
       "email": "client@limitless.com",
-      "password_hash": "$2a$10$B7Vmiy4Q7oRZF/uJK/olu.KDmmqSYAw.F5gmrQA6kqf2D5ureXCla",
+      "password_hash": "$2a$10$OIIYlrCfgwq8p/.sb6UNTO31H4HMZnkN1rhan5Vq/s1EA/pWgymqK",
       "role": "client",
       "phone": "+20 111 222 3333",
-      "created_at": "2026-09-15T15:01:15.133Z"
+      "created_at": "2026-09-15T15:14:21.350Z"
     }
   ],
   "client_profiles": [
@@ -41,7 +41,7 @@
       "chronic_diseases": "Hypertension, Mild Kidney Disease",
       "allergies": "Peanuts",
       "medication_notes": "Lisinopril",
-      "updated_at": "2026-09-15T15:01:24.997Z"
+      "updated_at": "2026-09-15T15:14:33.039Z"
     }
   ],
   "products": [
@@ -60,7 +60,7 @@
       "active_ingredients": "26 Vitamins & Minerals, Panax Ginseng 50mg, CoQ10 10mg, Lycopene",
       "is_featured": 1,
       "is_active": 1,
-      "created_at": "2026-09-15T15:01:15.133Z"
+      "created_at": "2026-09-15T15:14:21.350Z"
     },
     {
       "id": 2,
@@ -77,7 +77,7 @@
       "active_ingredients": "Hydrolyzed Marine Collagen 100mg, Biotin 1000mcg, Iron 18mg, Folic Acid 400mcg",
       "is_featured": 1,
       "is_active": 1,
-      "created_at": "2026-09-15T15:01:15.133Z"
+      "created_at": "2026-09-15T15:14:21.350Z"
     },
     {
       "id": 3,
@@ -94,7 +94,7 @@
       "active_ingredients": "Pure Fish Oil 2000mg (EPA 720mg, DHA 480mg)",
       "is_featured": 1,
       "is_active": 1,
-      "created_at": "2026-09-15T15:01:15.133Z"
+      "created_at": "2026-09-15T15:14:21.350Z"
     },
     {
       "id": 4,
@@ -111,7 +111,7 @@
       "active_ingredients": "Sodium 500mg, Potassium 380mg, Magnesium 100mg, Vitamin C 250mg",
       "is_featured": 1,
       "is_active": 1,
-      "created_at": "2026-09-15T15:01:15.133Z"
+      "created_at": "2026-09-15T15:14:21.350Z"
     },
     {
       "id": 5,
@@ -128,7 +128,7 @@
       "active_ingredients": "Vitamin C (Ascorbic Acid) 1000mg, Zinc 15mg",
       "is_featured": 0,
       "is_active": 1,
-      "created_at": "2026-09-15T15:01:15.133Z"
+      "created_at": "2026-09-15T15:14:21.350Z"
     },
     {
       "id": 6,
@@ -145,7 +145,7 @@
       "active_ingredients": "Bovine Lactoferrin 100mg, Vitamin C 50mg",
       "is_featured": 1,
       "is_active": 1,
-      "created_at": "2026-09-15T15:01:15.133Z"
+      "created_at": "2026-09-15T15:14:21.350Z"
     },
     {
       "id": 7,
@@ -162,7 +162,7 @@
       "active_ingredients": "Hydrolyzed Marine Collagen 5000mg, Hyaluronic Acid 100mg, Vitamin C 80mg",
       "is_featured": 1,
       "is_active": 1,
-      "created_at": "2026-09-15T15:01:15.133Z"
+      "created_at": "2026-09-15T15:14:21.350Z"
     },
     {
       "id": 8,
@@ -179,12 +179,12 @@
       "active_ingredients": "Elemental Magnesium (as Citrate) 400mg",
       "is_featured": 0,
       "is_active": 1,
-      "created_at": "2026-09-15T15:01:15.133Z"
+      "created_at": "2026-09-15T15:14:21.350Z"
     },
     {
       "id": 9,
       "name": "Limitless Test Booster Max",
-      "slug": "limitless-test-booster-max-1789484485009",
+      "slug": "limitless-test-booster-max-1789485273055",
       "description": "High-potency support with Zinc, Boron & Ashwagandha.",
       "category": "Daily Wellness",
       "price": 39.99,
@@ -196,7 +196,7 @@
       "active_ingredients": "Zinc 15mg, Boron 10mg, KSM-66 Ashwagandha 600mg",
       "is_featured": 0,
       "is_active": 1,
-      "created_at": "2026-09-15T15:01:25.009Z"
+      "created_at": "2026-09-15T15:14:33.055Z"
     }
   ],
   "discounts": [
@@ -208,7 +208,7 @@
       "discount_value": 10,
       "min_order_amount": 15,
       "times_used": 4,
-      "starts_at": "2026-09-15T15:01:15.133Z",
+      "starts_at": "2026-09-15T15:14:21.350Z",
       "expires_at": "2026-12-31T23:59:59.000Z",
       "is_active": 1
     },
@@ -220,7 +220,7 @@
       "discount_value": 20,
       "min_order_amount": 30,
       "times_used": 1,
-      "starts_at": "2026-09-15T15:01:15.133Z",
+      "starts_at": "2026-09-15T15:14:21.350Z",
       "expires_at": "2026-12-31T23:59:59.000Z",
       "is_active": 1
     }
@@ -239,12 +239,12 @@
       "shipping_address": "Building 14, Smart Village, Giza, Egypt",
       "customer_phone": "+20 111 222 3333",
       "distributor_id": 2,
-      "created_at": "2026-09-15T15:01:15.133Z",
-      "updated_at": "2026-09-15T15:01:25.017Z"
+      "created_at": "2026-09-15T15:14:21.350Z",
+      "updated_at": "2026-09-15T15:14:33.065Z"
     },
     {
       "id": 2,
-      "order_number": "NP-2026-1498",
+      "order_number": "NP-2026-8839",
       "user_id": 3,
       "total_amount": 23.98,
       "discount_amount": 2.4,
@@ -255,8 +255,8 @@
       "shipping_address": "123 Limitless Avenue, Cairo",
       "customer_phone": "+201012345678",
       "distributor_id": 2,
-      "created_at": "2026-09-15T15:01:25.005Z",
-      "updated_at": "2026-09-15T15:01:25.012Z"
+      "created_at": "2026-09-15T15:14:33.049Z",
+      "updated_at": "2026-09-15T15:14:33.058Z"
     }
   ],
   "order_items": [
@@ -305,7 +305,7 @@
       "status": "In Transit",
       "delivery_address": "Building 14, Smart Village, Giza, Egypt",
       "notes": "Out for delivery",
-      "updated_at": "2026-09-15T15:01:25.017Z"
+      "updated_at": "2026-09-15T15:14:33.065Z"
     },
     {
       "id": 2,
@@ -314,9 +314,75 @@
       "status": "Assigned",
       "delivery_address": "123 Limitless Avenue, Cairo",
       "notes": "Standard delivery dispatch",
-      "updated_at": "2026-09-15T15:01:25.005Z"
+      "updated_at": "2026-09-15T15:14:33.049Z"
     }
   ],
   "favorites": [],
-  "cart_items": []
+  "cart_items": [],
+  "notifications": [
+    {
+      "id": 3,
+      "title": "🧬 AI Alert: Hydrolyzed Marine Collagen Formula",
+      "message": "Rebuild joint cartilage & smooth skin elasticity. 10% off code LIMITLESS10 applied.",
+      "channels": [
+        "android_push",
+        "ios_push",
+        "email",
+        "sms"
+      ],
+      "target_segment": "chronic_patients",
+      "campaign_type": "ai_recommendation",
+      "attached_discount_code": "LIMITLESS10",
+      "recipient_count": 1,
+      "status": "Sent",
+      "sent_at": "2026-09-15T15:14:33.073Z",
+      "open_rate_pct": 83,
+      "click_rate_pct": 44,
+      "created_by": "admin@limitless.com"
+    },
+    {
+      "id": 1,
+      "title": "🧬 AI Match: Bio-active Lactoferrin for Immune Health",
+      "message": "Eva Pharma AI matched your health profile! Lactoferrin 100mg boosts immune cell defense while safeguarding iron levels.",
+      "channels": [
+        "android_push",
+        "ios_push",
+        "email"
+      ],
+      "target_segment": "chronic_patients",
+      "campaign_type": "ai_recommendation",
+      "attached_discount_code": "LIMITLESS10",
+      "recipient_count": 1420,
+      "status": "Sent",
+      "sent_at": "2026-09-15T15:14:21.350Z",
+      "open_rate_pct": 88,
+      "click_rate_pct": 42,
+      "created_by": "admin@limitless.com"
+    },
+    {
+      "id": 2,
+      "title": "⚡ 20% Off Limitless Hydration Packets!",
+      "message": "Replenish electrolytes instantly. Use promo code HYDRATE20 on orders above $30.",
+      "channels": [
+        "android_push",
+        "ios_push",
+        "sms"
+      ],
+      "target_segment": "all",
+      "campaign_type": "discount_promo",
+      "attached_discount_code": "HYDRATE20",
+      "recipient_count": 3850,
+      "status": "Sent",
+      "sent_at": "2026-09-15T15:14:21.350Z",
+      "open_rate_pct": 79,
+      "click_rate_pct": 36,
+      "created_by": "admin@limitless.com"
+    }
+  ],
+  "notification_automation": {
+    "ai_recommendation_trigger": true,
+    "discount_broadcast_auto": true,
+    "abandoned_cart_sms": true,
+    "low_stock_admin_alert": true
+  }
 }
