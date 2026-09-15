@@ -72,6 +72,7 @@ class AppState extends ChangeNotifier {
   int get cartCount => _cart.fold(0, (count, item) => count + item.quantity);
 
   AppState() {
+    _products = List.from(ApiService.fallbackProducts);
     loadProducts();
   }
 
