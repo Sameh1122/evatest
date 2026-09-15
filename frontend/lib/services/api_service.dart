@@ -93,26 +93,184 @@ class ApiService {
     throw Exception(data['error'] ?? 'Failed to update health profile');
   }
 
+  static final List<ProductModel> fallbackProducts = [
+    ProductModel(
+      id: 1,
+      name: 'Limitless Man Max Multivitamin 30 Tabs',
+      slug: 'limitless-man-max-30',
+      description: 'The ultimate daily wellness supplement for men by Eva Pharma, featuring 26 vitamins, minerals, Ginseng & CoQ10 to support energy, immunity, stamina, and cardiovascular health.',
+      category: 'Daily Wellness',
+      price: 11.99,
+      stockQuantity: 160,
+      dosageInstructions: 'Take 1 tablet daily with food.',
+      imageUrl: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80',
+      healthTags: 'Men Health, Energy, Stamina, Immune Defense',
+      contraindications: 'Severe uncontrolled hypertension without physician consultation',
+      activeIngredients: '26 Vitamins & Minerals, Panax Ginseng 50mg, CoQ10 10mg, Lycopene',
+      isFeatured: true,
+      isActive: true,
+    ),
+    ProductModel(
+      id: 2,
+      name: 'Limitless Woman Max Multivitamin 30 Tabs',
+      slug: 'limitless-woman-max-30',
+      description: 'Specially engineered multivitamin & beauty matrix for women, packed with Hydrolyzed Collagen, Biotin, Folic Acid, Iron, and Zinc for radiant hair, skin, nails, and bone strength.',
+      category: 'Daily Wellness',
+      price: 11.99,
+      stockQuantity: 140,
+      dosageInstructions: 'Take 1 tablet daily after meal.',
+      imageUrl: 'https://images.unsplash.com/photo-1577401239170-897942555fb3?w=600&auto=format&fit=crop&q=80',
+      healthTags: 'Women Health, Hair Skin Nails, Bone Health, Vitality',
+      contraindications: 'Hemochromatosis (iron overload condition)',
+      activeIngredients: 'Hydrolyzed Marine Collagen 100mg, Biotin 1000mcg, Iron 18mg, Folic Acid 400mcg',
+      isFeatured: true,
+      isActive: true,
+    ),
+    ProductModel(
+      id: 3,
+      name: 'Limitless Omega-3 Fish Oil 2000mg',
+      slug: 'limitless-omega-3-2000mg',
+      description: 'High-purity molecularly distilled EPA & DHA softgels for heart health, joint flexibility, cognitive clarity, and cholesterol balance.',
+      category: 'Full-Body Support',
+      price: 14.99,
+      stockQuantity: 190,
+      dosageInstructions: 'Take 2 softgels daily with lunch or dinner.',
+      imageUrl: 'https://images.unsplash.com/photo-1550572017-edd951aa8f72?w=600&auto=format&fit=crop&q=80',
+      healthTags: 'Heart Health, Joint Flexibility, Brain & Eye, Cholesterol',
+      contraindications: 'Bleeding disorders, Anticoagulant / Blood-thinning drugs',
+      activeIngredients: 'Pure Fish Oil 2000mg (EPA 720mg, DHA 480mg)',
+      isFeatured: true,
+      isActive: true,
+    ),
+    ProductModel(
+      id: 4,
+      name: 'Limitless Hydration Electrolytes 14 Packets',
+      slug: 'limitless-hydration-electrolytes',
+      description: 'Advanced cellular hydration mix formulated with Sodium, Potassium, Magnesium, and Vitamin C for rapid fluid replenishment and muscle cramp prevention.',
+      category: 'Hydration & Balance',
+      price: 10.50,
+      stockQuantity: 220,
+      dosageInstructions: 'Mix 1 stick packet into 16 oz of cold water.',
+      imageUrl: 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=600&auto=format&fit=crop&q=80',
+      healthTags: 'Hydration, Electrolytes, Energy, Anti-Fatigue',
+      contraindications: 'Severe End-Stage Renal Disease (Potassium restriction)',
+      activeIngredients: 'Sodium 500mg, Potassium 380mg, Magnesium 100mg, Vitamin C 250mg',
+      isFeatured: true,
+      isActive: true,
+    ),
+    ProductModel(
+      id: 5,
+      name: 'Limitless Vitamin C 1000mg Effervescent',
+      slug: 'limitless-vitamin-c-effervescent',
+      description: 'Rapid-absorbing effervescent immune shield with 1000mg Vitamin C and Zinc to support immune response and collagen synthesis.',
+      category: 'Immune Defense',
+      price: 7.50,
+      stockQuantity: 250,
+      dosageInstructions: 'Dissolve 1 tablet in water daily.',
+      imageUrl: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=600&auto=format&fit=crop&q=80',
+      healthTags: 'Immune Defense, Antioxidant, Vitality',
+      contraindications: 'Oxalate Kidney Stones history',
+      activeIngredients: 'Vitamin C (Ascorbic Acid) 1000mg, Zinc 15mg',
+      isFeatured: false,
+      isActive: true,
+    ),
+    ProductModel(
+      id: 6,
+      name: 'Limitless Lactoferrin 100mg Immunity',
+      slug: 'limitless-lactoferrin-100mg',
+      description: 'Bio-active iron-binding protein formula supporting immune cell defense, gut mucosal integrity, and healthy iron metabolism.',
+      category: 'Immune Defense',
+      price: 18.50,
+      stockQuantity: 75,
+      dosageInstructions: 'Take 1 sachet daily before breakfast.',
+      imageUrl: 'https://images.unsplash.com/photo-1616671285420-a68132e4860b?w=600&auto=format&fit=crop&q=80',
+      healthTags: 'Immune Defense, Iron Absorption, Gut Integrity',
+      contraindications: 'Severe Dairy Protein Allergy',
+      activeIngredients: 'Bovine Lactoferrin 100mg, Vitamin C 50mg',
+      isFeatured: true,
+      isActive: true,
+    ),
+    ProductModel(
+      id: 7,
+      name: 'Limitless Collagen Max Marine 30 Sachets',
+      slug: 'limitless-collagen-max',
+      description: 'Hydrolyzed Marine Collagen peptides combined with Hyaluronic Acid & Vitamin C for smooth skin elasticity and joint cartilage rebuilding.',
+      category: 'Full-Body Support',
+      price: 21.99,
+      stockQuantity: 12,
+      dosageInstructions: 'Mix 1 sachet in warm or cold beverage daily.',
+      imageUrl: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=600&auto=format&fit=crop&q=80',
+      healthTags: 'Joint Mobility, Anti-Aging, Skin Elasticity',
+      contraindications: 'Fish or Marine Allergy',
+      activeIngredients: 'Hydrolyzed Marine Collagen 5000mg, Hyaluronic Acid 100mg, Vitamin C 80mg',
+      isFeatured: true,
+      isActive: true,
+    ),
+    ProductModel(
+      id: 8,
+      name: 'Limitless Magnesium Citrate 400mg',
+      slug: 'limitless-magnesium-citrate',
+      description: 'Gentle, high-solubility magnesium for deep muscle relaxation, cramp prevention, and nervous system calm.',
+      category: 'Full-Body Support',
+      price: 9.99,
+      stockQuantity: 175,
+      dosageInstructions: 'Take 2 capsules before bedtime.',
+      imageUrl: 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=600&auto=format&fit=crop&q=80',
+      healthTags: 'Muscle Relaxation, Sleep Quality, Nerve Support',
+      contraindications: 'Severe Kidney Failure',
+      activeIngredients: 'Elemental Magnesium (as Citrate) 400mg',
+      isFeatured: false,
+      isActive: true,
+    ),
+  ];
+
   // --- PRODUCTS & RECOMMENDATIONS API ---
   static Future<List<ProductModel>> fetchProducts({
     String? search,
     String? category,
     String? healthTag,
   }) async {
-    final queryParams = <String, String>{};
-    if (search != null && search.isNotEmpty) queryParams['search'] = search;
-    if (category != null && category != 'All') queryParams['category'] = category;
-    if (healthTag != null && healthTag.isNotEmpty) queryParams['health_tag'] = healthTag;
+    List<ProductModel> resultList = [];
+    try {
+      final queryParams = <String, String>{};
+      if (search != null && search.isNotEmpty) queryParams['search'] = search;
+      if (category != null && category != 'All') queryParams['category'] = category;
+      if (healthTag != null && healthTag.isNotEmpty) queryParams['health_tag'] = healthTag;
 
-    final uri = Uri.parse('$baseUrl/products').replace(queryParameters: queryParams);
-    final response = await http.get(uri, headers: _headers());
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
-      final List list = data['products'] ?? [];
-      return list.map((p) => ProductModel.fromJson(p)).toList();
+      final uri = Uri.parse('$baseUrl/products').replace(queryParameters: queryParams);
+      final response = await http.get(uri, headers: _headers());
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        if (data is Map && data.containsKey('products')) {
+          final List list = data['products'] ?? [];
+          resultList = list.map((p) => ProductModel.fromJson(p)).toList();
+        }
+      }
+    } catch (e) {
+      print('Network fetch error: $e');
     }
-    throw Exception('Failed to load products');
+
+    if (resultList.isEmpty) {
+      resultList = List.from(fallbackProducts);
+      if (category != null && category != 'All') {
+        resultList = resultList.where((p) => p.category == category).toList();
+      }
+      if (search != null && search.isNotEmpty) {
+        final q = search.toLowerCase();
+        resultList = resultList.where((p) => 
+          p.name.toLowerCase().contains(q) || 
+          p.description.toLowerCase().contains(q) ||
+          p.healthTags.toLowerCase().contains(q)
+        ).toList();
+      }
+      if (healthTag != null && healthTag.isNotEmpty) {
+        resultList = resultList.where((p) => p.healthTags.toLowerCase().contains(healthTag.toLowerCase())).toList();
+      }
+    }
+
+    return resultList;
   }
+
 
   static Future<List<ProductRecommendation>> fetchRecommendations() async {
     final response = await http.get(

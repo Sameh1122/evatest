@@ -1,4 +1,15 @@
 {
   "version": 2,
-  "outputDirectory": "backend/public"
+  "outputDirectory": "backend/public",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
+
