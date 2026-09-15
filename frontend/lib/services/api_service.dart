@@ -9,9 +9,14 @@ import '../models/order_model.dart';
 class ApiService {
   static String get baseUrl {
     if (kIsWeb) {
-      final origin = Uri.base.origin;
-      if (origin.isNotEmpty && origin != 'null') {
-        return '$origin/api';
+      try {
+        final uri = Uri.base;
+        if (uri.hasAuthority && uri.host.isNotEmpty && uri.host != 'localhost') {
+          final portStr = uri.hasPort && uri.port != 80 && uri.port != 443 ? ':${uri.port}' : '';
+          return '${uri.scheme}://${uri.host}$portStr/api';
+        }
+      } catch (e) {
+        print('Error resolving Uri.base: $e');
       }
       return '/api';
     }
@@ -37,14 +42,16 @@ class ApiService {
         Uri.parse('$baseUrl/auth/login'),
         headers: _headers(),
         body: jsonEncode({'email': email, 'password': password}),
-      );
+      ).timeout(const Duration(seconds: 2));
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        authToken = data['token'];
-        return data;
+        if (data is Map<String, dynamic> && data.containsKey('token')) {
+          authToken = data['token'];
+          return data;
+        }
       }
     } catch (e) {
-      print('Network auth login error: $e');
+      print('Network auth login error (using fallback): $e');
     }
 
     // Fallback authentication for Demo / Vercel offline operation
