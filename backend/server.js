@@ -18,14 +18,14 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// API Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/products', productRoutes);
-app.use('/api/discounts', discountRoutes);
-app.use('/api/orders', orderRoutes);
-app.use('/api/distributor', distributorRoutes);
-app.use('/api/reports', reportRoutes);
-app.use('/api/notifications', notificationRoutes);
+// API Routes (Supports both /api/* and serverless route rewrites)
+app.use(['/api/auth', '/auth'], authRoutes);
+app.use(['/api/products', '/products'], productRoutes);
+app.use(['/api/discounts', '/discounts'], discountRoutes);
+app.use(['/api/orders', '/orders'], orderRoutes);
+app.use(['/api/distributor', '/distributor'], distributorRoutes);
+app.use(['/api/reports', '/reports'], reportRoutes);
+app.use(['/api/notifications', '/notifications'], notificationRoutes);
 
 // System Health Check
 app.get('/api/health', (req, res) => {
