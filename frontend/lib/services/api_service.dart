@@ -1,12 +1,19 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:flutter/foundation.dart' show kIsWeb;
 import '../models/user_model.dart';
 import '../models/product_model.dart';
 import '../models/discount_model.dart';
 import '../models/order_model.dart';
 
 class ApiService {
-  static const String baseUrl = 'http://localhost:5000/api';
+  static String get baseUrl {
+    if (kIsWeb) {
+      return '/api';
+    }
+    return 'http://localhost:5000/api';
+  }
+
   static String? authToken;
 
   static Map<String, String> _headers() {
